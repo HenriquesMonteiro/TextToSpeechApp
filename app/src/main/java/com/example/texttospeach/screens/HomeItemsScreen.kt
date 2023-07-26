@@ -1,12 +1,12 @@
 package com.example.texttospeach.screens
 
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Check
@@ -28,11 +28,12 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeItemsScreen() {
+fun HomeItemsScreen(navController: NavController) {
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -68,7 +69,9 @@ fun HomeItemsScreen() {
                     },
                     floatingActionButton = {
                         FloatingActionButton(
-                            onClick = { /*TODO*/ },
+                            onClick = {
+                                navController.navigate("HomeEmptyState")
+                            },
                             containerColor = BottomAppBarDefaults.bottomAppBarFabColor,
                             elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation(),
                         ) {
@@ -88,7 +91,7 @@ fun HomeItemsScreen() {
             Row(
                 Modifier
                     .fillMaxSize()
-                    .verticalScroll(rememberScrollState()),
+                    .horizontalScroll(rememberScrollState()),
                 horizontalArrangement = Arrangement.SpaceAround
             ) {
                 IconButton(onClick = { /*TODO*/ }) {
@@ -101,6 +104,10 @@ fun HomeItemsScreen() {
                     Text(text = "Family")
                 }
                 Button(onClick = { /*TODO*/ }) {
+                    Text(text = "Entertainment")
+                }
+                Button(onClick = { /*TODO*/ }, ) {
+
                     Text(text = "New category")
                 }
             }

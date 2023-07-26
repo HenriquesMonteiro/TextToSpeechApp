@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.example.texttospeach.screens.HomeEmptyStateScreen
+import com.example.texttospeach.navigation.NavigationGraph
 import com.example.texttospeach.ui.theme.TextToSpeechTheme
 
 
@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    HomeEmptyStateScreen()
+                    NavigationGraph()
                 }
             }
         }

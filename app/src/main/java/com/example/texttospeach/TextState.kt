@@ -5,7 +5,7 @@ import com.example.texttospeach.events.SortType
 
 data class TextState(
     val text: List<TextDataClass> = emptyList(),
-    val tile: String = "",
+    val title: String = "",
     val content: String = "",
     val texts: String= "",
     val dataCreated: String= "",

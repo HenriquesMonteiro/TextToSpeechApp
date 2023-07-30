@@ -1,4 +1,4 @@
-package com.example.texttospeach
+package com.example.TextToSpeech
 
 import org.junit.Test
 

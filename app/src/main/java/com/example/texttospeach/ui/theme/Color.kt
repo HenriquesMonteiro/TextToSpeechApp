@@ -1,4 +1,4 @@
-package com.example.texttospeach.ui.theme
+package com.example.TextToSpeech.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

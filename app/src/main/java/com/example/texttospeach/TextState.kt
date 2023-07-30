@@ -1,7 +1,7 @@
-package com.example.texttospeach
+package com.example.TextToSpeech
 
-import com.example.texttospeach.data.TextDataClass
-import com.example.texttospeach.events.SortType
+import com.example.TextToSpeech.data.TextDataClass
+import com.example.TextToSpeech.events.SortType
 
 data class TextState(
     val text: List<TextDataClass> = emptyList(),

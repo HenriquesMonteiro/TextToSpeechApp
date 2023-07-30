@@ -1,4 +1,4 @@
-package com.example.texttospeach.ui.theme
+package com.example.TextToSpeech.ui.theme
 
 import android.app.Activity
 import android.os.Build

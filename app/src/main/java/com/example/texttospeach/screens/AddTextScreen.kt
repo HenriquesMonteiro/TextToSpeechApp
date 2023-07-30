@@ -1,4 +1,4 @@
-package com.example.texttospeach.screens
+package com.example.TextToSpeech.screens
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
@@ -7,8 +7,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.texttospeach.TextState
-import com.example.texttospeach.events.TextEvent
+import com.example.TextToSpeech.TextState
+import com.example.TextToSpeech.events.TextEvent
 
 @Composable
 fun AddTextScreen(

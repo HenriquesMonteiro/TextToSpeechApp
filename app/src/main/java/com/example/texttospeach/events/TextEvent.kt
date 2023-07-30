@@ -1,6 +1,6 @@
-package com.example.texttospeach.events
+package com.example.TextToSpeech.events
 
-import com.example.texttospeach.data.TextDataClass
+import com.example.TextToSpeech.data.TextDataClass
 
 interface TextEvent {
     object SaveText : TextEvent

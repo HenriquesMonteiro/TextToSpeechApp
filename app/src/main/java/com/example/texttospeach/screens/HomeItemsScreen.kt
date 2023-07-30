@@ -1,4 +1,4 @@
-package com.example.texttospeach.screens
+package com.example.TextToSpeech.screens
 
 
 import androidx.compose.foundation.horizontalScroll
@@ -70,7 +70,7 @@ fun HomeItemsScreen(navController: NavController) {
                     floatingActionButton = {
                         FloatingActionButton(
                             onClick = {
-                                navController.navigate("HomeEmptyState")
+                                navController.navigate("AddTextPrev")
                             },
                             containerColor = BottomAppBarDefaults.bottomAppBarFabColor,
                             elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation(),

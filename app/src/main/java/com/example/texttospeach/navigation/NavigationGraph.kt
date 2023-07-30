@@ -1,11 +1,11 @@
-package com.example.texttospeach.navigation
+package com.example.TextToSpeech.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.texttospeach.screens.HomeEmptyStateScreen
-import com.example.texttospeach.screens.HomeItemsScreen
+import com.example.TextToSpeech.screens.AddTextPrev
+import com.example.TextToSpeech.screens.HomeItemsScreen
 
 
 @Composable
@@ -19,8 +19,8 @@ fun NavigationGraph() {
         composable("HomeItemsScreen"){
             HomeItemsScreen(navController = navController)
         }
-        composable("HomeEmptyState"){
-            HomeEmptyStateScreen(navController = navController)
+        composable("AddTextPrev"){
+            AddTextPrev(navController = navController)
         }
     }
 

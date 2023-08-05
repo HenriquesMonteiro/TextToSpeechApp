@@ -1,4 +1,4 @@
-package com.example.TextToSpeech.events
+package com.example.texttospeech.events
 
 enum class SortType {
     Title,

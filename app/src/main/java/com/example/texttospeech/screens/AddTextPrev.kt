@@ -1,4 +1,4 @@
-package com.example.TextToSpeech.screens
+package com.example.texttospeech.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -22,15 +22,15 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.TextToSpeech.R
+import com.example.texttospeech.R
 
 @Composable
-fun AddTextPrev(navController : NavController) {
+fun AddTextPrev(navController: NavController) {
     Surface(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.padding(16.dp)) {
 
             Row {
-                IconButton(onClick = {navController.navigate("HomeItemsScreen") }) {
+                IconButton(onClick = { navController.navigate("HomeItemsScreen") }) {
                     Image(
                         painterResource(id = R.drawable.arrow_left_line),
                         contentDescription = "Back Button",
@@ -39,12 +39,16 @@ fun AddTextPrev(navController : NavController) {
                 }
             }
 
-            Column(modifier = Modifier.fillMaxWidth().padding(14.dp)) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(14.dp)
+            ) {
                 val title = remember {
                     mutableStateOf("Untitled")
                 }
                 val content = remember {
-                    mutableStateOf("Content")
+                    mutableStateOf("Tap here to continue...")
                 }
                 BasicTextField(
                     value = title.value,
@@ -53,11 +57,9 @@ fun AddTextPrev(navController : NavController) {
                     },
                     modifier = Modifier.fillMaxWidth(),
                     singleLine = true,
-                    textStyle = TextStyle(color = Color.Black, fontSize = 20.sp)
+                    textStyle = TextStyle(color = Color.Black, fontSize = 25.sp)
                 )
-
-                Spacer(modifier = Modifier.height(14.dp))
-
+                Spacer(modifier = Modifier.height(6.dp))
                 BasicTextField(
                     value = content.value,
                     onValueChange = { newContent ->
@@ -65,7 +67,7 @@ fun AddTextPrev(navController : NavController) {
                     },
                     modifier = Modifier.fillMaxWidth(),
                     maxLines = 500,
-                    textStyle = TextStyle(color = Color.Black, fontSize = 20.sp)
+                    textStyle = TextStyle(color = Color.Black, fontSize = 17.sp)
 
                 )
 

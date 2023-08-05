@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.TextToSpeech"
+    namespace = "com.example.texttospeech"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.example.TextToSpeech"
+        applicationId = "com.example.texttospeech"
         minSdk = 24
         targetSdk = 33
         versionCode = 1

@@ -1,17 +1,18 @@
-package com.example.TextToSpeech.screens
+package com.example.texttospeech.screens
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
+
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.BottomAppBarDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -20,49 +21,48 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.TextToSpeech.R
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeEmptyStateScreen(navController: NavController) {
+fun HomeItemsScreen(navController: NavController) {
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
                 title = {
-                    Text(text = "Text To Speech")
+                    Text("Text To Speech")
                 },
                 actions = {
                     IconButton(onClick = { /*TODO*/ }) {
                         Icon(
-                            Icons.Default.Person, contentDescription = "Profile"
+                            Icons.Default.Person,
+                            contentDescription = "Profile Button"
                         )
                     }
                 }
             )
         },
-        bottomBar ={
+        bottomBar = {
             Row {
                 BottomAppBar(
                     actions = {
                         IconButton(onClick = { /*TODO*/ }) {
                             Icon(
-                                Icons.Filled.List,
+                                Icons.Filled.Check,
                                 contentDescription = " Localized Description"
                             )
                         }
                         IconButton(onClick = { /*TODO*/ }) {
                             Icon(
-                                Icons.Filled.Delete,
+                                Icons.Filled.Edit,
                                 contentDescription = " Localized Description"
                             )
                         }
@@ -70,7 +70,7 @@ fun HomeEmptyStateScreen(navController: NavController) {
                     floatingActionButton = {
                         FloatingActionButton(
                             onClick = {
-                                navController.navigate("HomeItemsScreen")
+                                navController.navigate("AddTextPrev")
                             },
                             containerColor = BottomAppBarDefaults.bottomAppBarFabColor,
                             elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation(),
@@ -81,26 +81,37 @@ fun HomeEmptyStateScreen(navController: NavController) {
                 )
             }
         }
-    )
-    { paddingValues ->
+    ) { paddingValues ->
         Surface(
             modifier = Modifier
-                .padding(paddingValues)
                 .fillMaxSize()
+                .padding(paddingValues),
+            color = MaterialTheme.colorScheme.background
         ) {
-            Box(
-                modifier = Modifier
-                    .size(350.dp)
-                    .background(Color.Gray),
-                contentAlignment = Alignment.Center
+            Row(
+                Modifier
+                    .fillMaxSize()
+                    .horizontalScroll(rememberScrollState()),
+                horizontalArrangement = Arrangement.SpaceAround
             ) {
-                Image(
-                    painterResource(id = R.drawable.file_edit_fill),
-                    contentDescription = "Empty State",
-                    modifier = Modifier.size(180.dp)
-                )
-            }
+                IconButton(onClick = { /*TODO*/ }) {
+                    Icon(imageVector = Icons.Default.Star, contentDescription = "Favourites")
+                }
+                TextButton(onClick = { /*TODO*/ }
+                ) {
+                    Text(text = "Favorites")
+                }
+                TextButton(onClick = { /*TODO*/ }) {
+                    Text(text = "Family")
+                }
+                TextButton(onClick = { /*TODO*/ }) {
+                    Text(text = "Entertainment")
+                }
+                TextButton(onClick = { /*TODO*/ }, ) {
 
+                    Text(text = "New category")
+                }
+            }
         }
 
     }

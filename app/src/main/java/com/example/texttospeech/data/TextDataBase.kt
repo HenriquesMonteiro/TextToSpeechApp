@@ -1,9 +1,9 @@
-package com.example.texttospeach.data
+package com.example.texttospeech.data
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.TextToSpeech.data.TextDao
-import com.example.TextToSpeech.data.TextDataClass
+import com.example.texttospeech.data.TextDao
+import com.example.texttospeech.data.TextDataClass
 
 
 @Database(

@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "TextToSpeach"
+rootProject.name = "texttospeech"
 include(":app")

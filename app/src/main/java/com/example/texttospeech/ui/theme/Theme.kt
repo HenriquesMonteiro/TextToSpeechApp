@@ -1,4 +1,4 @@
-package com.example.TextToSpeech.ui.theme
+package com.example.texttospeech.ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -36,7 +36,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun TextToSpeechTheme(
+fun texttospeechTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,

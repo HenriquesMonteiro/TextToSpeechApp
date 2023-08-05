@@ -1,4 +1,4 @@
-package com.example.TextToSpeech.data
+package com.example.texttospeech.data
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow

@@ -1,4 +1,4 @@
-package com.example.texttospeech
+package com.example.texttospeech.state
 
 import com.example.texttospeech.data.TextDataClass
 import com.example.texttospeech.events.SortType
@@ -8,7 +8,7 @@ data class TextState(
     val title: String = "",
     val content: String = "",
     val texts: String= "",
-    val dataCreated: String= "",
+    val dateCreated: String= "",
     val isAddingList: Boolean=false,
     val sortType: SortType = SortType.Id,
 )

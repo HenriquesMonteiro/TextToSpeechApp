@@ -4,12 +4,11 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 
-@Entity(tableName="Text")
+@Entity(tableName="TextDb")
 data class TextDataClass(
     @PrimaryKey(autoGenerate = true)
-    val Id: Int=0 ,
-    val Title: String,
+    val id: Int=0 ,
+    val title: String,
     val content: String,
     val dataCreated: String
-
 )

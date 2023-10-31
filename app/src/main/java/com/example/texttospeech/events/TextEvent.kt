@@ -2,7 +2,7 @@ package com.example.texttospeech.events
 
 import com.example.texttospeech.data.TextDataClass
 
-interface TextEvent {
+sealed interface TextEvent {
     object SaveText : TextEvent
     data class SetTitle(val title: String) : TextEvent
     data class SetContent(val content: String) : TextEvent

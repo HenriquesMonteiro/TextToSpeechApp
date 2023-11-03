@@ -25,7 +25,7 @@ fun NavigationGraph(
             HomeItemsScreen(navController = navController, state = state, event= onEvent)
         }
         composable("AddTextScreen"){
-            AddTextScreen(navController = navController, state = state, event= onEvent)
+            AddTextScreen(navController = navController, state = state, onEvent= onEvent)
         }
     }
 

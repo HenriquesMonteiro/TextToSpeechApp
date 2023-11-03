@@ -7,7 +7,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -17,6 +19,7 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.BottomAppBarDefaults
+import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
@@ -35,10 +38,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.texttospeech.events.SortType
 import com.example.texttospeech.events.TextEvent
-import com.example.texttospeech.models.TextViewModel
 import com.example.texttospeech.state.TextState
 
 
@@ -47,8 +50,18 @@ import com.example.texttospeech.state.TextState
 fun HomeItemsScreen(
     navController: NavController,
     state: TextState,
-    event: (TextEvent) -> Unit) {
-    var showBottomSheet by remember { mutableStateOf(false) }
+    event: (TextEvent) ->  Unit) {
+    var showSheet by remember { mutableStateOf(false) }
+
+    if (showSheet) {
+        SortTasksSheet(
+            onEvent = event,
+            state = state
+        ) {
+            showSheet = false
+        }
+    }
+
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -59,7 +72,8 @@ fun HomeItemsScreen(
                     IconButton(onClick = { /*TODO*/ }) {
                         Icon(
                             Icons.Default.Person,
-                            contentDescription = "Profile Button")
+                            contentDescription = "Profile Button"
+                        )
                     }
                 }
             )
@@ -74,7 +88,7 @@ fun HomeItemsScreen(
                                 contentDescription = " Localized Description"
                             )
                         }
-                        IconButton(onClick = { showBottomSheet = true }) {
+                        IconButton(onClick = { showSheet = true }) {
                             Icon(
                                 Icons.Filled.MoreVert,
                                 contentDescription = "Sort Tasks"
@@ -84,7 +98,7 @@ fun HomeItemsScreen(
                     floatingActionButton = {
                         FloatingActionButton(
                             onClick = {
-                                navController.navigate("AddTextPrev")
+                                navController.navigate("AddTextScreen")
                             },
                             containerColor = BottomAppBarDefaults.bottomAppBarFabColor,
                             elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation(),
@@ -99,7 +113,8 @@ fun HomeItemsScreen(
 
         LazyColumn(
             contentPadding = paddingValues,
-            modifier = Modifier.fillMaxSize()){
+            modifier = Modifier.fillMaxSize()
+        ) {
             item {
                 Row(
                     Modifier
@@ -120,37 +135,47 @@ fun HomeItemsScreen(
                     TextButton(onClick = { /*TODO*/ }) {
                         Text(text = "Entertainment")
                     }
-                    TextButton(onClick = { /*TODO*/ }, ) {
+                    TextButton(onClick = { /*TODO*/ }) {
 
                         Text(text = "New category")
                     }
                 }
             }
+            items(state.text) { text ->
+                Row(
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Column(
+                        modifier = Modifier.weight(1f)
+                    ) {
 
-
+                        Text(
+                            text = text.title,
+                            fontSize = 20.sp
+                        )
+                        Text(text = text.title, fontSize = 15.sp)
+                    }
+                }
             }
         }
     }
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun SortTasksSheet(
-    state: TextState,
-    onEvent: (TextEvent) -> Unit,
-    bottomSheetState: TextViewModel.BottomSheetState,
-    onDismiss: () -> Unit
-){
-    val sheetState = rememberModalBottomSheetState()
-    var showBottomSheet by remember { mutableStateOf(false) }
-
-    if (bottomSheetState.isOpen) {
-    ModalBottomSheet(
-        sheetState = rememberModalBottomSheetState(),
-        onDismissRequest = {
-            showBottomSheet = false
-        },
+}
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    fun SortTasksSheet(
+        state: TextState,
+        onEvent: (TextEvent) -> Unit,
+        onDismiss: () -> Unit
     ) {
-        // Sheet content
+        val modalBottomSheetState = rememberModalBottomSheetState()
+        ModalBottomSheet(
+            sheetState = modalBottomSheetState,
+            onDismissRequest = {
+                onDismiss()
+            },
+            dragHandle = { BottomSheetDefaults.DragHandle() },
+        ) {
+            // Sheet content
             Column(
                 Modifier
                     .fillMaxSize()
@@ -176,5 +201,4 @@ fun SortTasksSheet(
             }
         }
     }
-}
 

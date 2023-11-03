@@ -28,7 +28,6 @@ class TextViewModel(private val app : Application) : AndroidViewModel(app)
     }
     private val dao = db.dao
     //empty contact state
-    private val _state= MutableStateFlow(TextState())
     //The sortype will be by default the Data created
     private val _sortType =  MutableStateFlow(SortType.DateCreated)
     //holds the current item or text
@@ -41,12 +40,14 @@ class TextViewModel(private val app : Application) : AndroidViewModel(app)
                 }
             } .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
     //to combine multiple flows into one, when executed
-    private val state = combine(_state, _sortType, _text){ state, sortType, text ->
+    private val _state= MutableStateFlow(TextState())
+
+     val state = combine(_state, _sortType, _text){ state, sortType, text ->
         state.copy(
             text = text,
             sortType = sortType
         )
-    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(   5000), TextState())
+     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(   5000), TextState())
     fun onEvent(event: TextEvent){
         when(event){
             is TextEvent.DeleteText -> {
@@ -98,11 +99,6 @@ class TextViewModel(private val app : Application) : AndroidViewModel(app)
                 _sortType.value = event.sortType
             }
         }
-    }
-
-    @BottomSheetState.Model
-    data class BottomSheetState(var isOpen: Boolean = false) {
-        annotation class Model
     }
 
 }

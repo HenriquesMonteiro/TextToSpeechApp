@@ -12,13 +12,13 @@ interface TextDao {
     @Upsert
     suspend fun upsertText(text: TextDataClass)
 
-    @Query("SELECT * FROM Text ORDER BY Id ASC")
+    @Query("SELECT * FROM TextDb ORDER BY Id ASC")
     fun getTextOrderedByID(): Flow<List<TextDataClass>>
 
-    @Query("SELECT * FROM Text ORDER BY dataCreated ASC")
+    @Query("SELECT * FROM TextDb ORDER BY dataCreated ASC")
     fun getTextOrderedByTitle(): Flow<List<TextDataClass>>
 
-    @Query("SELECT * FROM Text ORDER BY Title ASC")
+    @Query("SELECT * FROM TextDb ORDER BY Title ASC")
     fun getTextOrderedByDate(): Flow<List<TextDataClass>>
 }
 

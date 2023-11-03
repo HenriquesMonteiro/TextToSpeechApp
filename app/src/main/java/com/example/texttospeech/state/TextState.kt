@@ -7,7 +7,6 @@ data class TextState(
     val text: List<TextDataClass> = emptyList(),
     val title: String = "",
     val content: String = "",
-    val texts: String= "",
     val dateCreated: String= "",
     val isAddingList: Boolean=false,
     val sortType: SortType = SortType.Id,
